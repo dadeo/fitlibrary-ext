@@ -2,7 +2,7 @@ package org.d4d30.fitlibrary.ext;
 
 import fit.Fixture;
 
-public class TestAnnotatedDoFixture extends AnnotationDoFixture {
+public class ParentAnnotatedDoFixture extends AnnotationDoFixture {
 
     @Alias({"owner _ _",
             "borrower _ _"})
@@ -13,7 +13,8 @@ public class TestAnnotatedDoFixture extends AnnotationDoFixture {
 
     @Alias("borrower _ applies for loan with loan type id _")
     public boolean method1(String name, String loanTypeId) {
-        System.out.println("<<<<< name name:" + name + " loanTypeId:" + loanTypeId);
+//    public boolean method1(String name) {
+        System.out.println("<<<<< name name:" + name);
         return true;
     }
 

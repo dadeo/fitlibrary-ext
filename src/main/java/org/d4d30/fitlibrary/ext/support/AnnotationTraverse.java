@@ -32,7 +32,7 @@ public class AnnotationTraverse extends DoTraverse {
                 map.put(typedObject, new AnnotatedMethodCollector().collectFrom(typedObject.getSubject()));
                 typedObject = ((Evaluator) typedObject.getSubject()).getTypedSystemUnderTest();
             }
-            List<AnnotatedMethod> methods = new AnnotatedMethodCollector().collectFrom(this.getSystemUnderTest());
+            
             boolean found = false;
             out:
             for (Map.Entry<TypedObject, List<AnnotatedMethod>> entry : map.entrySet()) {

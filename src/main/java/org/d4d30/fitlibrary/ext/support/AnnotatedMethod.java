@@ -20,7 +20,11 @@ public class AnnotatedMethod {
     }
 
     public boolean matches(Row row) {
-        return matcher.matches(row);
+        boolean matches = matcher.matches(row);
+        if(matches) {
+            verifyParameterCount();            
+        }
+        return matches;
     }
 
     public String getName() {
@@ -71,4 +75,16 @@ public class AnnotatedMethod {
                 '}';
     }
 
+    private void verifyParameterCount() {
+        int signatureParameterCount = 0;
+        for(String part : splitSignature) {
+            if("_".equals(part)) {
+                ++signatureParameterCount;
+            }
+        }
+        if(signatureParameterCount != getParameterCount()) {
+            throw new RuntimeException("Alias parameter count (" + signatureParameterCount + ") does not match method argument count (" + getParameterCount() + "), method:" + method.getName());
+        }
+    }
+    
 }
